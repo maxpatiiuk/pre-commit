@@ -1,11 +1,20 @@
 # Pre-commit Hooks
 
-Useful [pre-commit](https://pre-commit.com/) hooks
+Useful [pre-commit](https://pre-commit.com/) hooks.
 
 ## TypeScript Type Checker
 
 Runs TypeScript Type Checker to check your `.js`/`.ts`/`.jsx`/`.tsx`
 files.
+
+You need to have `npm` and `npx` installed, along with a `typescript`
+npm package.
+
+You can provide an optional parameter that would specify the location of
+your `tsconfig.json` file. You can specify a relative path starting
+with `./` or an absolute path. If this parameter is ommited, it would
+try to automatically find a `tsconfig.json` file in the repository's
+root directory or any subdirectory.
 
 Usage:
 ```yml
@@ -13,6 +22,7 @@ Usage:
    rev: v1.0.0
    hooks:
     - id: tsc
+      args: [ ./ ]  # optional
 ```
 
 ## Regex Blacklister
