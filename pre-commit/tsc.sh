@@ -27,6 +27,11 @@ if [ $# -eq 0 ]
 then
   # find tsconfig.json, if there is any
   tsconfig="$(find . -type d \( -name node_modules -o -name .idea \) -prune -false -o -name 'tsconfig.json' | head -1)"
+  if [ -z "$tsconfig" ];
+  then
+    echo "Unable to find \`tsconfig.json\`. It's location was not provided. This hook would now exit"
+    exit 0
+  fi
 else
   tsconfig="${1}"
 fi

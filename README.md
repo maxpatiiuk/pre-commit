@@ -26,6 +26,12 @@ Usage:
       args: [ ./ ]  # optional
 ```
 
+NOTE: if you didn't provide the path to your `tsconfig.json`, and the
+tool was unable to find it automatically, it would fail silently. This
+is useful if you want to use the same `.pre-commit-config.yaml` file for
+several different projects. If you want to be notified of this error,
+add a `verbose: true` to the above yaml structure just before `args`.
+
 ## Regex Blacklister
 
 Makes sure that your files don't have strings matching a particular
