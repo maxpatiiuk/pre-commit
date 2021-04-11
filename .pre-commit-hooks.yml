@@ -1,0 +1,17 @@
+ - id: tsc
+   name: TypeScript Typechecker
+   description: Run TypeScript Typechecker on your JS and TS files
+   entry: pre-commit/tsc.sh
+   language: script
+   files: \*.[jt]sx?$
+   types_or: [javascript, jsx, ts, tsx]
+   additional_dependencies: [typescript]
+   pass_filenames: false
+
+ - id: regex-blacklist
+   name: Regex Blacklist
+   description: Make sure your files don't match regex expressions
+   entry: pre-commit/regex-blacklist.sh
+   language: script
+   files: \*$
+   
