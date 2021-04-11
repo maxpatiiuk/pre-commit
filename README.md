@@ -1,6 +1,7 @@
 # Pre-commit Hooks
 
-Useful [pre-commit](https://pre-commit.com/) hooks.
+A collection of pre-commit hooks for
+[pre-commit.com](https://pre-commit.com/).
 
 ## TypeScript Type Checker
 
