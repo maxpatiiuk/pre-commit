@@ -10,7 +10,7 @@ dictionary="${1}"
 changed_files="${@:2}"
 
 for file in $changed_files; do
-  if (grep "$file" -E -C 4 -n --color -f "$dictionary");
+  if ["$dictionary" != "$file"] && (grep "$file" -E -C 4 -n --color -f "$dictionary");
   then
     echo -e "${RED}Found blacklisted matches in \"$file\"${NC}"
     exit 1
