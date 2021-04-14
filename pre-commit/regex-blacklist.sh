@@ -6,14 +6,14 @@
 RED='\033[0;31m'
 NC='\033[0m'
 
-dictionary="specifyweb/frontend/js_src/lib/tests/regex-blacklist.txt"
-#dictionary="${1}"
+dictionary="${1}"
 changed_files="${@:2}"
 
 if [ ! -f $dictionary ]; then
   echo -e "${RED}Dictionary file not found!${NC}"
   exit 1
 fi
+
 
 filtered_files=()
 for file in $changed_files; do
