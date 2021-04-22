@@ -9,6 +9,8 @@ NC='\033[0m'
 dictionary="${1}"
 changed_files="${@:2}"
 
+echo "Dictionary: $dictionary"
+
 if [ ! -f $dictionary ]; then
   echo -e "${RED}Dictionary file not found!${NC}"
   exit 1
@@ -17,7 +19,9 @@ fi
 
 filtered_files=()
 for file in $changed_files; do
+  echo "Changed file: $file"
   if [[ $file != $dictionary ]]; then
+    echo "Skippping the dictionary"
     filtered_files+=($file)
   fi
 done
@@ -27,7 +31,8 @@ if [ ${#filtered_files[@]} -eq 0 ]; then
   exit 0
 fi
 
-found=`git grep --cached -E -C 4 -n --color --break -f "$dictionary" -- $filtered_files`
+joined_file_names=$( IFS=$' '; echo "${filtered_files[*]}" )
+found=`git grep --cached -E -C 4 -n --color --break -f "$dictionary" -- $joined_file_names`
 
 if [[ ! -z $found ]]; then
   echo -e "$found"
