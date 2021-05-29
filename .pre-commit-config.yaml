@@ -33,16 +33,19 @@ default_stages:
 exclude: ^(lib|.idea)
 repos:
   - repo: https://github.com/maxxxxxdlp/pre-commit
-    rev: v1.0.4
+    rev: v1.0.5
     hooks:
       - id: tsc
       - id: regex-blacklist
         args:
           - regex-blacklist.txt
 
+  #- repo: https://github.com/awebdeveloper/pre-commit-stylelint
+  #- repo: https://github.com/pre-commit/mirrors-eslint
+
   # global hooks:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+    rev: v4.0.1
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -51,21 +54,31 @@ repos:
       - id: check-case-conflict
       - id: check-docstring-first
       - id: check-json
+      - id: check-xml
+      - id: check-shebang-scripts-are-executable
       - id: check-merge-conflict
       - id: check-symlinks
       - id: detect-private-key
       - id: mixed-line-ending
       - id: requirements-txt-fixer
+      - id: fix-byte-order-marker
+      - id: fix-encoding-pragma
+      - id: forbid-new-submodules
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.0.0
+    hooks:
+      - id: codespell
 
   - repo: https://github.com/psf/black
-    rev: 20.8b1
+    rev: 21.5b1
     hooks:
       - id: black
         args:
           - --line-length=72
 
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.9.0
+    rev: 3.9.2
     hooks:
       - id: flake8
         additional_dependencies: [flake8-bugbear]
@@ -83,7 +96,7 @@ repos:
           - -v 2
 
   - repo: https://github.com/PyCQA/pydocstyle
-    rev: 6.0.0
+    rev: 6.1.1
     hooks:
       - id: pydocstyle
 
@@ -94,7 +107,7 @@ repos:
         exclude: ^docs/
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.12.0
+    rev: v2.18.3
     hooks:
       - id: pyupgrade
 
@@ -104,34 +117,10 @@ repos:
       - id: setup-cfg-fmt
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v2.2.1
+    rev: v2.3.0
     hooks:
       - id: prettier
-        files: \.(js|jsx|ts|tsx|json|json5|yaml|css|scc|sass|html|less)?$
-
-  - repo: https://github.com/awebdeveloper/pre-commit-stylelint
-    rev: 0.0.2
-    hooks:
-      - id: stylelint
-        files: \.(css|scss|sass|js|jsx|ts|tsx)$
-        additional_dependencies:
-          - stylelint@^13.8.0
-          - stylelint-config-prettier@^8.0.2
-          - stylelint-config-standard@^20.0.0
-
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v7.24.0
-    hooks:
-      - id: eslint
-        files: \.(js|jsx|ts|tsx)?$
-        additional_dependencies:
-          - "@typescript-eslint/eslint-plugin@^4.22.0"
-          - "@typescript-eslint/parser@^4.22.0"
-          - eslint-config-prettier@^8.2.0
-          - eslint-plugin-prettier@^3.3.1
-          - eslint-plugin-react@^7.23.2
-          - eslint-plugin-unicorn@^29.0.0
-          - prettier-eslint@^12.0.0
+        files: \.(js|jsx|ts|tsx|json|json5|yaml|css|scss|sass|html|less|md)?$
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
     rev: v1.1.1
@@ -144,14 +133,14 @@ repos:
       - id: python-safety-dependencies-check
 
   - repo: https://github.com/lovesegfault/beautysh
-    rev: 6.0.1
+    rev: v6.1.0
     hooks:
       - id: beautysh
         args:
           - --indent-size=2
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.15.0
+    rev: v0.15.1
     hooks:
       - id: gitlint
 
@@ -164,6 +153,7 @@ repos:
     rev: v0.11.0
     hooks:
       - id: markdownlint
+        files: \.md$
         args:
           - --git-recurse
 
