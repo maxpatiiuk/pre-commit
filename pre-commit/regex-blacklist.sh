@@ -9,6 +9,13 @@ NC='\033[0m'
 dictionary="${1}"
 changed_files="${@:2}"
 
+
+# Expand the tilde in $dictionary
+if [[ $dictionary = ~* ]]; then
+  dictionary="${HOME}${dictionary:1}"
+fi
+
+
 echo "Dictionary: $dictionary"
 
 if [ ! -f $dictionary ]; then
