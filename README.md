@@ -17,7 +17,7 @@ a `tsconfig.json` file in the repository's root directory or any subdirectory.
 Usage:
 
 ```yml
-- repo: https://github.com/maxxxxxdlp/pre-commit/
+- repo: https://github.com/maxpatiiuk/pre-commit/
   rev: v1.0.0
   hooks:
     - id: tsc
@@ -41,7 +41,7 @@ argument.
 Usage:
 
 ```yml
-- repo: https://github.com/maxxxxxdlp/pre-commit/
+- repo: https://github.com/maxpatiiuk/pre-commit/
   rev: v1.0.0
   hooks:
     - id: regex-blacklister
